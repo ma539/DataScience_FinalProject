@@ -1,0 +1,61 @@
+* {
+}
+
+#mainNav.customMainNav {
+	position:absolute;
+	left:0;
+	right:0;
+}
+.customNavContainer {
+	background-color: rgba(0,0,0,0.5);
+	padding-top:10px;
+	padding-bottom:10px;
+	border-radius:30px;
+}
+
+.navbar-brand {
+	background-color: #fed136;
+	color:white !important;
+	border-radius: 30px;
+}
+.navbar-brand {
+	padding-left:20px;
+	padding-right:20px;
+}
+
+.navbar-nav:hover {
+	color:initial !important;
+}
+
+.cartoWindow {
+	display:block;
+	width:90%;
+	min-width: 300px;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+	overflow:hidden;
+}
+.cartoWindow .cartoFrame {
+	width: calc(100% + 56px);
+	margin-left:-56px;
+	margin-bottom:40px;
+}
+/*
+.cartoWindow .cartoFrame .CDB-Dashboard-menuInner {
+	display:none !important;
+}
+.cartoWindow .cartoFrame .CDB-Dashboard-mapWrapper--withMenu {
+	margin-left:0;
+}
+*/
+
+.portfolio-link {
+	height:200px !important;
+}
+
+@media only screen and (max-width: 1270px) {
+	.cartoWindow .cartoFrame {
+		margin-left:0;
+	}
+}

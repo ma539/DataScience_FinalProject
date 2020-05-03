@@ -1,51 +1,69 @@
 import React from 'react';
 // import logo from './logo.svg';
-import Portfolio from './components/Portfolio'
+import PortfolioLinks from './components/Portfolio'
 import './App.css';
 
-function App() {
-  const portfolioLinks = [
+// Imported stylesheet
+import "./styles/all.css";
+
+class App extends React.Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      debug:true,
+    }
+  }
+
+  render() {
+
+    const portfolioLinks = [
     {
       title: 'New York City',
+      img: require('./assets/img/state_ny.png'),
       caption: ''
     },
     {
       title: 'Boston',
+      img: require('./assets/img/state_mass.png'),
       caption: '(Coming Soon)'
     },
     {
       title: 'Chicago',
+      img: require('./assets/img/state_il.png'),
       caption: '(Coming Soon)'
     },
     {
       title: 'Atlanta',
+      img: require('./assets/img/state_georgia.png'),
       caption: '(Coming Soon)'
     },
     {
       title: 'San Francisco',
+      img: require('./assets/img/state_cal.png'),
       caption: '(Coming Soon)'
     },
     {
       title: 'Denver',
+      img: require('./assets/img/state_col.png'),
       caption: '(Coming Soon)'
     },
     {
       title: 'Miami',
+      img: require('./assets/img/state_florida.png'),
       caption: '(Coming Soon)'
     }
   ]
 
-  return (
+    return (
     <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div className="container">
-      <a className="navbar-brand js-scroll-trigger" href="#page-top">Crime Watch</a>
-      <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i className="fa fa-bars"></i>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarResponsive">
-        <ul className="navbar-nav text-uppercase ml-auto">
+      <nav id="mainNav" className={ (this.state.debug) ? "customMainNav navbar navbar-expand-lg navbar-dark" : "navbar navbar-expand-lg navbar-dark fixed-top"}>
+        <div className={ (this.state.debug) ? "customNavContainer container" : "container"}>
+          <a className="navbar-brand js-scroll-trigger" href="#page-top">Crime Watch</a>
+          <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i className="fa fa-bars"></i></button>
+          <div className="collapse navbar-collapse" id="navbarResponsive">
+        <ul className={ (this.state.debug) ? "navbar-nav text-uppercase ml-auto" : "navbar-nav text-uppercase ml-auto"}>
           <li className="nav-item">
             <a className="nav-link js-scroll-trigger" href="#services">Services</a>
           </li>
@@ -115,8 +133,10 @@ function App() {
     </div>
   </section>
 
-<iframe width="100%" height="800" frameborder="0" src="https://kct34.carto.com/builder/df5d9a4d-bea2-450f-b7fc-5692d4d86e86/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-  <Portfolio portfolioLinks={portfolioLinks}></Portfolio>
+  <div className="cartoWindow">
+    <iframe className="cartoFrame" width="100%" height="800" frameborder="0" src="https://kct34.carto.com/builder/df5d9a4d-bea2-450f-b7fc-5692d4d86e86/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+      <PortfolioLinks links={portfolioLinks} debug={this.state.debug}></PortfolioLinks>
+  </div>
 
 
   <section className="page-section" id="about">
@@ -223,7 +243,7 @@ services it is a necessity.</p>
             <img className="mx-auto rounded-circle" src="https://ca.slack-edge.com/T02THST8H-UMDG4E9S7-5f03805a2264-512" alt=""/>
             <h4>Masud Ahmed</h4>
             <p className="text-muted">Full-Stack Engineer</p>
-            <ul className="list-inline social-buttons">
+            {!this.state.debug && <ul className="list-inline social-buttons">
               <li className="list-inline-item">
                 <a href="#something">
                   <i className="fa fa-twitter"></i>
@@ -240,6 +260,7 @@ services it is a necessity.</p>
                 </a>
               </li>
             </ul>
+            }
           </div>
         </div>
         <div className="col-sm-4">
@@ -247,7 +268,7 @@ services it is a necessity.</p>
             <img className="mx-auto rounded-circle" src="https://ca.slack-edge.com/T02THST8H-UMDG4MVNX-6b72cae92afd-512" alt=""/>
             <h4>Kieran Taylor</h4>
             <p className="text-muted">Data Visualizations Engineer</p>
-            <ul className="list-inline social-buttons">
+            {!this.state.debug && <ul className="list-inline social-buttons">
               <li className="list-inline-item">
                 <a href="#something">
                   <i className="fa fa-twitter"></i>
@@ -264,6 +285,7 @@ services it is a necessity.</p>
                 </a>
               </li>
             </ul>
+            }
           </div>
         </div>
         <div className="col-sm-4">
@@ -271,7 +293,7 @@ services it is a necessity.</p>
             <img className="mx-auto rounded-circle" src="https://ca.slack-edge.com/T02THST8H-UMDG4CMV1-27f875e7faa5-512" alt=""/>
             <h4>Ryan Kim</h4>
             <p className="text-muted">Lead Data Engineer</p>
-            <ul className="list-inline social-buttons">
+            {!this.state.debug && <ul className="list-inline social-buttons">
               <li className="list-inline-item">
                 <a href="#something">
                   <i className="fa fa-twitter"></i>
@@ -288,6 +310,7 @@ services it is a necessity.</p>
                 </a>
               </li>
             </ul>
+            }
           </div>
         </div>
       </div>
@@ -413,6 +436,7 @@ services it is a necessity.</p>
   </footer>
     </div>
   );
+  }
 }
 
 let imgUrl = './assets/img/map-image.png'

@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default ({ portfolioLinks }) => {
+export default class PortfolioLinks extends React.Component {
+  render() {
     return (
+      <>
         <section className="bg-light page-section" id="portfolio">
         <div className="container">
           <div className="row">
@@ -12,15 +14,16 @@ export default ({ portfolioLinks }) => {
           </div>
           <div className="row">
             {
-                portfolioLinks && portfolioLinks.map(({ title, caption }, index) =>
+                this.props.links && this.props.links.map(({ title, img, caption }, index) =>
                     <div className="col-md-4 col-sm-6 portfolio-item">
                         <a className="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-                            <div className="portfolio-hover">
+                            {this.props.debug && <div className="portfolio-hover">
                                 <div className="portfolio-hover-content">
                                     <i className="fa fa-plus fa-3x"></i>
                                 </div>
                             </div>
-                            <img className="img-fluid" src={ `https://unsplash.it/350/140/?${Math.floor(Math.random(0,100) * 100)}` } alt="portfolio_img" />
+                            }
+                            <img className="img-fluid" src={ (img != null) ? img : `https://unsplash.it/350/140/?${Math.floor(Math.random(0,100) * 100)}` } alt="portfolio_img" />
                         </a>
                         <div className="portfolio-caption">
                             <h4>{ title }</h4>
@@ -32,5 +35,7 @@ export default ({ portfolioLinks }) => {
           </div>
         </div>
       </section>
-    )
+      </>
+    );
+  }
 }
