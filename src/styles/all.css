@@ -2,9 +2,10 @@
 }
 
 #mainNav.customMainNav {
-	position:absolute;
+	position:fixed;
 	left:0;
 	right:0;
+	z-index: 1000;
 }
 .customNavContainer {
 	background-color: rgba(0,0,0,0.5);
