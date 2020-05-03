@@ -1,6 +1,7 @@
 import React from 'react';
 // import logo from './logo.svg';
 import PortfolioLinks from './components/Portfolio'
+import RenderIFrame from './components/RenderIFrame'
 import './App.css';
 
 // Imported stylesheet
@@ -134,7 +135,7 @@ class App extends React.Component {
   </section>
 
   <div className="cartoWindow">
-    <iframe className="cartoFrame" width="100%" height="800" frameborder="0" src="https://kct34.carto.com/builder/df5d9a4d-bea2-450f-b7fc-5692d4d86e86/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+    <RenderIFrame />
       <PortfolioLinks links={portfolioLinks} debug={this.state.debug}></PortfolioLinks>
   </div>
 
